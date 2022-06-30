@@ -4,8 +4,8 @@ We will build an Express web API that connects to a Postgres database. The web A
 
 ```
 GET http://localhost:5150/ex1/persons/
-GET http://localhost:5150/ex3/persons/1
-GET http://localhost:5150/ex2/persons/1?type=person
+GET http://localhost:5150/ex2/persons/1
+GET http://localhost:5150/ex3/persons/1?personType=cashier
 ...
 ```
 
