@@ -11,5 +11,5 @@ Assignments are located [here](./Assignments.md).
 - Be sure to run `create-bookstore-db.sql` in your student database
 
 # Videos
-[What is an API (7m)](https://youtu.be/Yzx7ihtCGBs)
-[What is a ReST API (6m)](https://youtu.be/SLwpqD8n3d0)
+- [What is an API (7m)](https://youtu.be/Yzx7ihtCGBs)
+- [What is a ReST API (6m)](https://youtu.be/SLwpqD8n3d0)
