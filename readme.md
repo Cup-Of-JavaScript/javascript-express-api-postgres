@@ -9,7 +9,7 @@ Assignments are located [here](./Assignments.md).
   - Update `postgres-pool.js` with database password
 
 # Notes
-- `api.template.js` is a file that can be used to start building your Express API
+- [api.js.template](./api.js.template) is a file that can be used to start building your Express API
 - Be sure to run `create-bookstore-db.sql` in your student database (if you haven't already)
 
 # Videos
