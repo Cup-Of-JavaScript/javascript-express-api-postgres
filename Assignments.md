@@ -13,6 +13,8 @@ Be sure to run the `SQL\create-bookstore-db.sql` script to create the tables and
 
 Use [Thunder Client](https://www.thunderclient.com/) to test your endpoints.
 
+Be sure to create `postgres-pool.js` from `postgres-pool.js.template`.
+
 ![](./docs/thunder-client.png)
 
 # Ex. 1 Get All People
