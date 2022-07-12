@@ -7,7 +7,7 @@
 
 const cors = require('cors');
 const express = require('express');
-// const dataAccess = require('./data-access');
+//const dataAccess = require('./data-access');
 
 const PORT = 5152;
 const app = express();
@@ -27,11 +27,16 @@ app.use(cors());
 //
 
 app.get('/ex1/persons/:id', cors(corsOptions), async (req, res) => { 
-    // let result = await dataAccess.<YOUR FUNCTION HERE>
+    // Parsing...
     // let id = req.params['id'];                 // Read path params from URL.
     // let queryParam1 = req.query['personType']  // Read query params from URL.
     // let body = req.body;                       // Read request body.
-    // res.status(404);                           // Change status code.
+
+    // Data access..
+    // let result = await dataAccess.<YOUR FUNCTION HERE>
+
+    // Response...
+    // res.status(404);  // 201, 404             // Status code.
     // res.send(<YOUR OBJECT HERE>);
 });
 
