@@ -8,6 +8,17 @@ Assignments are located [here](./Assignments.md).
 - Create file: `postgres-pool.js` from file: `postgres-pool.js.template`
   - Update `postgres-pool.js` with database password
 
+# Creating a New API
+- Prereq: Install nodemon only once: `npm install -g nodemon`
+- Create a new directory and `cd` into this directory
+- Execute: `npm init`
+- Execute: `npm install express`
+- Execute: `npm install cors`
+- Create file: `api.js` from `api.js.template`
+- Start API: `nodemon api.js`
+- Test message endpoint: `GET http://localhost:5152/message`
+- Create new endpoints!
+
 # Notes
 - [api.js.template](./api.js.template) is a file that can be used to start building your Express API
 - Be sure to run `create-bookstore-db.sql` in your student database (if you haven't already)
