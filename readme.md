@@ -10,14 +10,21 @@ Assignments are located [here](./Assignments.md).
 
 # Creating a New API
 - Prereq: Install nodemon only once: `npm install -g nodemon`
-- Create a new directory and `cd` into this directory
-- Execute: `npm init`
+- Create a new directory and `cd` into this directory, lauch VS code: `code .`
+- Execute: `npm init -y`
 - Execute: `npm install express`
 - Execute: `npm install cors`
 - Create file: `api.js` from `api.js.template`
-- Start API: `nodemon api.js`
-- Test message endpoint: `GET http://localhost:5152/message`
-- Create new endpoints!
+- Optionally change the port number in `api.js` (something greate than 1024): `const PORT = 5152;` 
+- Start the API: `nodemon api.js`
+- Test the "Hello World" message endpoint in Thunder Client: `GET http://localhost:5152/message`
+- Create new endpoint:
+  - Uncomment line 10: `const dataAccess = require('./data-access');` in `api.js`
+  - Create `postgres-pool.js` file from `postgres-pool.js.template`
+  - Create SQL in Postgres first
+  - Create data access layer code
+  - Create API endpoint
+  - Create Thunder Client request
 
 # Notes
 - [api.js.template](./api.js.template) is a file that can be used to start building your Express API
