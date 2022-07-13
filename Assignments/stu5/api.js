@@ -25,7 +25,7 @@ app.use(cors());
 // GET /ex1/persons/
 app.get('/ex1/persons/', cors(corsOptions), async (req, res) => { 
     let result = await dataAccess.getPersons()
-    console.log(result)
+    // console.log(result)
      res.send(result);
 });
 
@@ -34,7 +34,7 @@ app.get('/ex1/persons/', cors(corsOptions), async (req, res) => {
 app.get('/ex2/persons/:id', cors(corsOptions), async (req, res) => { 
     let personId = req.params['id']
     let result = await dataAccess.getPerson(personId)
-    console.log(result)
+    // console.log(result)
      res.send(result);
 });
 
@@ -42,9 +42,15 @@ app.get('/ex2/persons/:id', cors(corsOptions), async (req, res) => {
 
 //
 // GET /ex3/persons?personType={Manager|Cashier|Stock%20Person}
-//
+app.get('/ex3/persons/personType=Stock%20Person', cors(corsOptions), async (req, res) => { 
+    let personType = req.query['personType']
+    let result = await dataAccess.getStockPersons(personType)
+    console.log(result)
+     res.send(result);
+});
 
-// Ex. 3: TODO ...
+
+
 
 //
 // GET /ex4/books
