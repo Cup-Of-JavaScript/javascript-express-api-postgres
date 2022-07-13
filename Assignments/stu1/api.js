@@ -58,7 +58,13 @@ app.get('/ex3/persons', cors(corsOptions), async (req, res) => {
 // GET /ex4/books
 //
 
-// Ex. 4: TODO ...
+app.get('/ex4/books', cors(corsOptions), async (req, res) => { 
+    let result = await dataAccess.getBooks()
+    console.log(result)
+    res.send(result)
+
+    // select * from person join .. where person_type = 'Manager'
+});
 
 //
 // GET /ex5/books/:id
