@@ -25,7 +25,13 @@ app.use(cors());
 // GET /ex1/persons/
 //
 
-// Ex. 1: TODO ...
+// //
+// GET /message
+//
+
+app.get('/message', cors(corsOptions), async (req, res) => { 
+    res.send('Hello World.')
+});
 
 //
 // GET /ex2/persons/:id
