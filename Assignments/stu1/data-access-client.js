@@ -7,8 +7,8 @@ const dataAccess = require('./data-access.js');
 
 const main = async () => {
      
-
-    let r = await dataAccess.getPersonID();  
+    
+    let r = await dataAccess.getPersons();  
 
 
     // Select..
