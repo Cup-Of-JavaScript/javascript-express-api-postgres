@@ -7,6 +7,7 @@
 const { pool } = require("../../postgres-pool");
 const GET_PERSON = "select * from person;"
 const GET_PERSONID = "select * from person where person_id = $1"
+const GET_STOCK_PERSON = "select p.person_id, pt.person_type_id, p.first_name, p.last_name, p.dob, pt.person_type from person p join person_type pt on p.person_type_id = pt.person_type_id where pt.person_type = 'Stock Person'"
 
 // exports.ex1 = async () => {
 //     let personId = 1
@@ -28,6 +29,17 @@ exports.getPersonsID = async (personId) => {
     let retval = null;
     try {
         let r = await pool.query(GET_PERSONID, [personId]);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}
+
+exports.GET_PERSONSFORPERSONTYPE = async () => {
+    let retval = null;
+    try {
+        let r = await pool.query(GET_STOCK_PERSON);
         retval = r.rows;
     } catch (err) {
         console.error(err);
