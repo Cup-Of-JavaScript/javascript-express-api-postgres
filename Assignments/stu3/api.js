@@ -1,8 +1,4 @@
-// 
-// File: api.js
-// Date: 6/30/2022
-// Desc: Simple API using CommonJS modules.
-//
+
 
 const cors = require('cors');
 const express = require('express');
