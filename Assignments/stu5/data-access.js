@@ -6,12 +6,15 @@
 
 const { pool } = require("../../postgres-pool");
 
-exports.getPerson = async (personId) => {
-    let retval = null;
-    try {
-        // TODO ...
-    } catch (err) {
-        console.error(err);
-    }
-    return retval;
-}
+const GET_PERSONS = 'select * from person;'
+
+exports.getPersons = async () => {
+  let retval = null;
+  try {
+    let r = await pool.query(GET_PERSONS);
+    retval = r.rows;
+  } catch (err) {
+    console.error(err);
+  }
+  return retval;
+};
