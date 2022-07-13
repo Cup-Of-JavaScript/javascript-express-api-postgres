@@ -1,9 +1,0 @@
-const { Pool } = require("pg");
-
-exports.pool = new Pool({
-    user: "postgres",
-    password: "xxxxxxx",  // <== Replace with your password.
-    database: "postgres", // <== Make sure this is the correct database.
-    host: "localhost",
-    port: 5432,
-  });
