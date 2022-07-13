@@ -44,7 +44,7 @@ app.get('/ex2/persons/:id', cors(corsOptions), async (req, res) => {
 // GET /ex3/persons?personType={Manager|Cashier|Stock%20Person}
 app.get('/ex3/persons/', cors(corsOptions), async (req, res) => { 
     let personType = req.query['personType']
-    let result = await dataAccess.getStockPersons(personType)
+    let result = await dataAccess.getPersonsforType(personType)
     console.log(result)
      res.send(result);
 });
