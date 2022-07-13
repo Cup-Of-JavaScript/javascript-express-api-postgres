@@ -13,8 +13,9 @@ const main = async () => {
     //     lastName: "smith",
     //     dob: "8/29/1970"
     // }
+    // let personId = 1
 
-    let r = await dataAccess.getPersons();
+    let r = await dataAccess.getPerson();
     console.log(r)
     process.exit()
 }
