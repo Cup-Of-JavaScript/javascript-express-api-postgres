@@ -18,3 +18,18 @@ exports.getPersons = async () => {
     }
     return retval;
 }
+
+//ex2:
+
+const get_PersonID = 'SELECT * FROM person WHERE person_id=$1;'
+
+exports.getPersonsId = async (personId) => {
+    let retval = null;
+    try {
+        let r = await pool.query(get_PersonID, [personId]);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}
