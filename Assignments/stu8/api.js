@@ -39,7 +39,15 @@ app.get('/ex1/persons', cors(corsOptions), async (req,res) => {
 // GET /ex2/persons/:id
 //
 
+
 // Ex. 2: TODO ...
+
+app.get('/ex2/persons/:id', cors(corsOptions), async (req,res) => {
+    let personId = req.params['id']
+    let persons = await dataAccess.getPerson(personId)
+    res.send(persons)
+});
+
 
 //
 // GET /ex3/persons?personType={Manager|Cashier|Stock%20Person}
