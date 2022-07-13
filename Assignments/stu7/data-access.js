@@ -21,9 +21,9 @@ exports.getPersons = async () => {
 
 //ex2:
 
-const get_PersonID = 'SELECT * FROM person WHERE person_id = ($1);'
+const get_PersonID = 'SELECT * FROM person WHERE person_id=$1;'
 
-exports.getPersonId = async (personId) => {
+exports.getPersonsId = async (personId) => {
     let retval = null;
     try {
         let r = await pool.query(get_PersonID, [personId]);
