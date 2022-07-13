@@ -25,12 +25,9 @@ app.use(cors());
 // GET /ex1/persons/
 //
 
-// //
-// GET /message
-//
-
-app.get('/message', cors(corsOptions), async (req, res) => { 
-    res.send('Hello World.')
+app.get('/ex1/persons/', cors(corsOptions), async (req, res) => { 
+    let persons = await dataAccess.getPersons()
+    res.send(persons)
 });
 
 //
