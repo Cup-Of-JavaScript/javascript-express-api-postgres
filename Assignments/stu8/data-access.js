@@ -4,12 +4,15 @@
 // Desc: CommonJS module that contains our data access code.
 //
 
+const GET_PERSONS = "select * from person;"
+
 const { pool } = require("../../postgres-pool");
 
-exports.getPerson = async (personId) => {
+exports.getPersons = async () => {
     let retval = null;
     try {
-        // TODO ...
+        let r = await pool.query(GET_PERSONS);
+        retval = r.rows;
     } catch (err) {
         console.error(err);
     }
