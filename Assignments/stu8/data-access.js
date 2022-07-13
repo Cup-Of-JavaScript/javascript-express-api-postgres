@@ -13,6 +13,8 @@ join person_type pt on pt.person_type_id = p.person_type_id where pt.person_type
 
 const GET_BOOKS = "select * from book"
 
+const GET_BOOK_BY_ID = "select * from book where book_id =$1;"
+
 const { pool } = require("../../postgres-pool");
 
 exports.getPersons = async () => {
@@ -52,6 +54,17 @@ exports.getBooks = async () => {
     let retval = null;
     try {
         let r = await pool.query(GET_BOOKS);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}
+
+exports.getBookbyId = async (bookId) => {
+    let retval = null;
+    try {
+        let r = await pool.query(GET_BOOK_BY_ID, [bookId]);
         retval = r.rows;
     } catch (err) {
         console.error(err);
