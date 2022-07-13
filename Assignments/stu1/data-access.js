@@ -24,7 +24,7 @@ exports.getPersons = async () => {
     return retval;
 }
 
-exports.getPersonID = async (personId) => {
+exports.getPersonsID = async (personId) => {
     let retval = null;
     try {
         let r = await pool.query(GET_PERSONID, [personId]);
