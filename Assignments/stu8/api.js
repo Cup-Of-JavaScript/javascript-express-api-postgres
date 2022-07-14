@@ -109,7 +109,12 @@ app.post('/ex7/persons', cors(corsOptions), async (req,res) => {
 // POST /ex8/bookstores
 //
 
-// Ex. 8: TODO ...
+app.post('/ex8/bookstores', cors(corsOptions), async (req,res) => {
+    let bookstore = req.body;
+    let bookstoreId = await dataAccess.addBookstore(bookstore)
+    bookstore.bookstoreId = bookstoreId
+    res.send(bookstore);
+})
 
 //
 // PUT /ex9/persons
