@@ -14,12 +14,15 @@ const main = async () => {
         "dob": "4/1/1989"
      }
     
-    let r = await dataAccess.AddPerson(person);  
+     let book = {
+        "bookstoreName": "Books-A-Million"
+     }
+    let r = await dataAccess.AddBookstore(book);  
 
 
     // Select..
     // let r = await dataAccess.getPerson(1)
-    
+
     // Delete...
     //let r = await dataAccess.deleteCustomer(2);
 

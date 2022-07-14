@@ -25,7 +25,7 @@ app.use(cors());
 // GET /ex1/persons/
 //
 
-app.get('/ex1/persons/', cors(corsOptions), async (req, res) => { 
+app.get('/ex1/persons/', cors(corsOptions), async (req, res) => {
     let result = await dataAccess.getPersons()
     console.log(result)
     res.send(result)
@@ -35,7 +35,7 @@ app.get('/ex1/persons/', cors(corsOptions), async (req, res) => {
 // GET /ex2/persons/:id
 //
 
-app.get('/ex2/persons/:id', cors(corsOptions), async (req, res) => { 
+app.get('/ex2/persons/:id', cors(corsOptions), async (req, res) => {
     let personId = req.params['id'];
     let result = await dataAccess.getPersonsID(personId)
     console.log(result)
@@ -46,7 +46,7 @@ app.get('/ex2/persons/:id', cors(corsOptions), async (req, res) => {
 // GET /ex3/persons?personType={Manager|Cashier|Stock%20Person}
 //
 
-app.get('/ex3/persons', cors(corsOptions), async (req, res) => { 
+app.get('/ex3/persons', cors(corsOptions), async (req, res) => {
     let personsType = req.query['personType'];
     let result = await dataAccess.GET_PERSONSFORPERSONTYPE(personsType)
     res.send(result)
@@ -58,7 +58,7 @@ app.get('/ex3/persons', cors(corsOptions), async (req, res) => {
 // GET /ex4/books
 //
 
-app.get('/ex4/books', cors(corsOptions), async (req, res) => { 
+app.get('/ex4/books', cors(corsOptions), async (req, res) => {
     let result = await dataAccess.getBooks()
     console.log(result)
     res.send(result)
@@ -70,7 +70,7 @@ app.get('/ex4/books', cors(corsOptions), async (req, res) => {
 // GET /ex5/books/:id
 //
 
-app.get('/ex5/books/:id', cors(corsOptions), async (req, res) => { 
+app.get('/ex5/books/:id', cors(corsOptions), async (req, res) => {
     let bookId = req.params['id'];
     let result = await dataAccess.getBook(bookId)
     console.log(result)
@@ -81,7 +81,7 @@ app.get('/ex5/books/:id', cors(corsOptions), async (req, res) => {
 // GET /ex6/bookstores/:id/people
 //
 
-app.get('/ex6/bookstores/:id/people', cors(corsOptions), async (req, res) => { 
+app.get('/ex6/bookstores/:id/people', cors(corsOptions), async (req, res) => {
     let bookstoreId = req.params['id'];
     let result = await dataAccess.getPeopleForBookstore(bookstoreId)
     console.log(result)
@@ -103,7 +103,12 @@ app.post('/ex7/persons', cors(corsOptions), async (req, res) => {
 // POST /ex8/bookstores
 //
 
-// Ex. 8: TODO ...
+app.post('/ex8/bookstores', cors(corsOptions), async (req, res) => { 
+    let book = req.body;
+    let bookId = await dataAccess.AddBookstore(book)
+    book.bookId= bookId
+    res.send(bookId)
+});
 
 //
 // PUT /ex9/persons
