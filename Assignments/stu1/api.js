@@ -103,7 +103,12 @@ app.post('/ex7/persons', cors(corsOptions), async (req, res) => {
 // POST /ex8/bookstores
 //
 
-// Ex. 8: TODO ...
+app.post('/ex8/bookstores', cors(corsOptions), async (req, res) => { 
+    let book = req.body;
+    let bookId = await dataAccess.AddBookstore(book)
+    book.bookId= bookId
+    res.send(bookId)
+});
 
 //
 // PUT /ex9/persons

@@ -17,7 +17,7 @@ const main = async () => {
      let book = {
         "bookstoreName": "Books-A-Million"
      }
-    let r = await dataAccess.AddPerson(book);  
+    let r = await dataAccess.AddBookstore(book);  
 
 
     // Select..

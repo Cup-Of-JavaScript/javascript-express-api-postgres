@@ -12,7 +12,7 @@ const GET_BOOKS = "select * from book;"
 const GET_BOOKID = "select * from book where book_id = $1;"
 const SELECT_PEOPLEFORBOOKSTORE = "select p.person_id, p.first_name, p.last_name, pt.person_type from person p join person_type pt on p.person_type_id = pt.person_type_id where book_store_id = $1;"
 const ADD_PERSON = "insert into person (book_store_id, person_type_id, first_name, last_name, dob) values ($1, $2, $3, $4, $5) returning book_store_id, person_type_id, first_name, last_name, dob, person_id;"
-const ADD_BOOKSTORE = "insert into book_store (book_store_name) values ($1) returning book_store_name, book_id"
+const ADD_BOOKSTORE = "insert into book_store (book_store_name) values ($1) returning book_store_name, book_store_id"
 
 // exports.ex1 = async () => {
 //     let personId = 1
