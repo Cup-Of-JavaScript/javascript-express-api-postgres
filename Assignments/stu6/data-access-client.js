@@ -1,20 +1,9 @@
-//
-// File: data-access-client.js
-// Desc: Simple driver for the data access layer (DAL).
-//
-
 const dataAccess = require('./data-access.js');
 
 const main = async () => {
-     let person = {
-        "bookStoreId": 1,
-        "personTypeId": 1,
-        "firstName": "Angie",
-        "lastName": "Christopher",
-        "dob": "4/1/1989"
-     }
-    
-    let r = await dataAccess.AddPerson(person);  
+
+
+    let r = await dataAccess.getPersons();  
 
 
     // Select..
@@ -37,4 +26,4 @@ const main = async () => {
     process.exit()
 }
 
-main();
+main(); 

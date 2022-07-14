@@ -92,10 +92,17 @@ app.get('/ex6/bookstores/:id/people', cors(corsOptions), async (req, res) => {
 // POST /ex7/persons
 //
 
+<<<<<<< HEAD
 app.post('/ex7/persons', cors(corsOptions), async (req, res) => {
     let person = req.body;
     let personId = await dataAccess.AddPerson(person)
     person.personId = personId
+=======
+app.post('/ex7/persons', cors(corsOptions), async (req, res) => { 
+    let person = req.body;
+    let personId = await dataAccess.AddPerson(person)
+    person.personId= personId
+>>>>>>> ed047932eac54d51a8b4ddd75d6a117d8041b5b6
     res.send(personId)
 });
 

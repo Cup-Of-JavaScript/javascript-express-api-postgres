@@ -14,7 +14,7 @@ const main = async () => {
         dob: "8/29/1970"
     }
 
-    let r = await dataAccess.addPerson(person);
+    let r = await dataAccess.getPersons();
     console.log(r)
     process.exit()
 }
