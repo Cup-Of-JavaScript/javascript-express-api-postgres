@@ -32,6 +32,11 @@ from person p
 join book_store bs on bs.book_store_id=p.book_store_id
 join person_type pt on p.person_type_id=pt.person_type_id
 where bs.book_store_id = $1`
+const ADD_PERSON =
+`insert into 
+  person(person_type_id, book_store_id, first_name, last_name, dob) 
+  values($1,$2,$3,$4,$5) 
+returning person_id, first_name, last_name;`
 
 exports.getPersons = async () => {
   let retval = null;
@@ -93,6 +98,17 @@ exports.getPerson = async () => {
     let retval = null;
      try {
        let r = await pool.query(GET_PERSONS_FOR_BOOK_STORE, [bookStoreId]);
+       retval = r.rows;
+     } catch (err) {
+       console.error(err);
+     }
+     return retval;
+   };
+
+   exports.addPerson = async (personTypeId, bookStoreId, firstName, lastName, dob) => {
+    let retval = null;
+     try {
+       let r = await pool.query(ADD_PERSON, [personTypeId, bookStoreId, firstName, lastName, dob]);
        retval = r.rows;
      } catch (err) {
        console.error(err);
