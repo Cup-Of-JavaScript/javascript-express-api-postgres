@@ -68,8 +68,7 @@ exports.getPerson = async () => {
     return retval;
   };
 
-  exports.getBook = async () => {
-    let bookId = 1
+  exports.getBook = async (bookId) => {
     let retval = null;
     try {
       let r = await pool.query(GET_BOOK, [bookId]);
