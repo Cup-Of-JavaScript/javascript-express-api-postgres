@@ -13,6 +13,8 @@ const GET_BOOKID = "select * from book where book_id = $1;"
 const SELECT_PEOPLEFORBOOKSTORE = "select p.person_id, p.first_name, p.last_name, pt.person_type from person p join person_type pt on p.person_type_id = pt.person_type_id where book_store_id = $1;"
 const ADD_PERSON = "insert into person (book_store_id, person_type_id, first_name, last_name, dob) values ($1, $2, $3, $4, $5) returning book_store_id, person_type_id, first_name, last_name, dob, person_id;"
 const ADD_BOOKSTORE = "insert into book_store (book_store_name) values ($1) returning book_store_name, book_store_id"
+const UPDATE_PERSON = "update person set first_name = $2, last_name = $3 where person_id = $1 returning person_id, person_type_id, book_store_id, first_name, last_name, dob;"
+
 
 // exports.ex1 = async () => {
 //     let personId = 1
@@ -85,10 +87,10 @@ exports.getPeopleForBookstore = async (bookstoreID) => {
     return retval;
 }
 
-exports.AddPerson = async (person) => {
+exports.AddPerson = async (person2) => {
     let retval = null;
     try {
-        let r = await pool.query(ADD_PERSON, [person.bookStoreId, person.personTypeId, person.firstName, person.lastName, person.dob]);
+        let r = await pool.query(ADD_PERSON, [person2.bookStoreId, person2.personTypeId, person2.firstName, person2.lastName, person2.dob]);
         retval = r.rows;
     } catch (err) {
         console.error(err);
@@ -104,5 +106,16 @@ exports.AddBookstore = async (book) => {
     } catch (err) {
         console.error(err);
     }
+    return retval;
+}
+
+exports.putUpdatePerson = async (person) => {
+    let retval = null;
+    try {       
+        let r = await pool.query(UPDATE_PERSON, [person.personId, person.firstName, person.lastName]);
+        retval = r.rows;
+     } catch (err) {
+        console.error(err);
+     }
     return retval;
 }

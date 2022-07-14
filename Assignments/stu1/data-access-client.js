@@ -6,19 +6,27 @@
 const dataAccess = require('./data-access.js');
 
 const main = async () => {
-     let person = {
-        "bookStoreId": 1,
-        "personTypeId": 1,
-        "firstName": "Angie",
-        "lastName": "Christopher",
-        "dob": "4/1/1989"
+     let person2 = {
+        bookStoreId: 1,
+        personTypeId: 1,
+        firstName: "Angie",
+        lastName: "Christopher",
+        dob: "4/1/1989"
      }
     
      let book = {
-        "bookstoreName": "Books-A-Million"
+        bookstoreName: "Books-A-Million"
      }
-    let r = await dataAccess.AddBookstore(book);  
 
+     let person = {
+        personId: 1,
+        firstName: "Ms. Alice",
+        lastName: "Changes"
+     }
+     
+    
+     let r = await dataAccess.putUpdatePerson(person);  
+  
 
     // Select..
     // let r = await dataAccess.getPerson(1)

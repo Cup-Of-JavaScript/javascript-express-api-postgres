@@ -93,9 +93,9 @@ app.get('/ex6/bookstores/:id/people', cors(corsOptions), async (req, res) => {
 //
 
 app.post('/ex7/persons', cors(corsOptions), async (req, res) => { 
-    let person = req.body;
-    let personId = await dataAccess.AddPerson(person)
-    person.personId= personId
+    let person2 = req.body;
+    let personId = await dataAccess.AddPerson(person2)
+    person2.personId= personId
     res.send(personId)
 });
 
@@ -114,7 +114,12 @@ app.post('/ex8/bookstores', cors(corsOptions), async (req, res) => {
 // PUT /ex9/persons
 //
 
-// Ex. 9: TODO ...
+app.put('/ex9/persons', cors(corsOptions), async (req, res) => { 
+    let person = req.body;
+    let updatePerson = await dataAccess.putUpdatePerson(person)
+    person.updatePerson = updatePerson
+    res.send(updatePerson)
+});
 
 //
 // DELETE /ex10/persons/:id
