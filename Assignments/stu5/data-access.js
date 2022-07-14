@@ -21,6 +21,7 @@ from person p
 join person_type pt on p.person_type_id= pt.person_type_id
 where pt.person_type = $1`
 const GET_BOOKS = `select * from book;`
+const GET_BOOK =`select * from book where book_id=$1;`
 
 exports.getPersons = async () => {
   let retval = null;
@@ -60,6 +61,17 @@ exports.getPerson = async () => {
     let retval = null;
     try {
       let r = await pool.query(GET_BOOKS);
+      retval = r.rows;
+    } catch (err) {
+      console.error(err);
+    }
+    return retval;
+  };
+
+  exports.getBook = async (bookId) => {
+    let retval = null;
+    try {
+      let r = await pool.query(GET_BOOK, [bookId]);
       retval = r.rows;
     } catch (err) {
       console.error(err);
