@@ -49,3 +49,15 @@ exports.getPersonsForType = async (personType) => {
     return retval;
 }
 
+//ex4:
+const getAllBooks = 'SELECT * FROM book'
+exports.getPersons = async () => {
+    let retval = null;
+    try {
+        let r = await pool.query(get_Persons);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}

@@ -52,7 +52,6 @@ app.get('/ex3/persons', cors(corsOptions), async (req, res) => {
 // GET /ex4/books
 //
 
-// Ex. 4: TODO ...
 
 //
 // GET /ex5/books/:id
