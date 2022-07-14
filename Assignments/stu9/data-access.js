@@ -1,9 +1,8 @@
 const { pool } = require("../../postgres-pool");
 
 //const get_Persons = 'select * from person'
-//const get_Person = 'select * from person where person_id = ($1)'
-const get_Person_Type = `select * from person p
-join person_type pt on pt.person_type_id = p.person_type_id where pt.person_type = $1`
+const get_Person = 'select * from person where person_id = ($1)'
+
 exports.getPersons = async () => {
     let retval = null;
     try {
