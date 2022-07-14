@@ -6,9 +6,15 @@
 const dataAccess = require('./data-access.js');
 
 const main = async () => {
-     
+     let person = {
+        "bookStoreId": 1,
+        "personTypeId": 1,
+        "firstName": "Angie",
+        "lastName": "Christopher",
+        "dob": "4/1/1989"
+     }
     
-    let r = await dataAccess.AddPerson();  
+    let r = await dataAccess.AddPerson(person);  
 
 
     // Select..
