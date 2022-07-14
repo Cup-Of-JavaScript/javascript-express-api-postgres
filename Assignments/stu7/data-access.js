@@ -33,3 +33,19 @@ exports.getPersonsId = async (personId) => {
     }
     return retval;
 }
+
+
+//ex3:
+const get_PersonType = 'SELECT * FROM person p JOIN person_type pt ON pt.person_type_id = p.person_type_id WHERE pt.person_type=$1;'
+
+exports.getPersonsForType = async (personType) => {
+    let retval = null;
+    try {
+        let r = await pool.query(get_PersonType, [personType]);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}
+
