@@ -32,6 +32,8 @@ const ADD_BOOKSTORE = `
 
 const UPDATE_PERSON = 'update person set first_name = $2, last_name = $3 where person_id = $1 returning person_id, first_name, last_name'
 
+const DELETE_PERSON = 'delete from person where person_id = $1'
+
 const { pool } = require("../../postgres-pool");
 
 exports.getPersons = async () => {
@@ -132,3 +134,14 @@ exports.updatePerson = async (person) => {
     }
     return retval;
 }   
+
+exports.deletePerson = async (personId) => {
+    let retval = null;
+    try {
+        let r = await pool.query(DELETE_PERSON, [personId]);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}

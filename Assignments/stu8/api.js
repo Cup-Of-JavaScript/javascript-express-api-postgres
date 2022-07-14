@@ -135,6 +135,12 @@ app.put('/ex9/persons', cors(corsOptions), async (req,res) => {
 
 // Ex. 10: TODO ...
 
+app.delete('/ex10/persons/:id', cors(corsOptions), async (req, res) => {
+    let personId = req.params['id']
+    let person = await dataAccess.deletePerson(personId)
+    res.send("Ok");
+})
+
 app.listen(PORT, () => {
     console.log(`Bookstore API is running on port: ${PORT}`);
 });
