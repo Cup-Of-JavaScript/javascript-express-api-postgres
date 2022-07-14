@@ -24,13 +24,15 @@ app.get('/ex1/persons/', cors(corsOptions), async (req, res) => {
     res.send(persons)
 });
 
-// Ex. 1: TODO ...
-
 //
 // GET /ex2/persons/:id
 //
 
-// Ex. 2: TODO ...
+app.get('/ex2/persons/1', cors(corsOptions), async (req, res) => { 
+    let persons = await dataAccess.getPerson(1)
+    res.send(persons)
+});
+
 
 //
 // GET /ex3/persons?personType={Manager|Cashier|Stock%20Person}

@@ -3,7 +3,8 @@ const dataAccess = require('./data-access.js');
 const main = async () => {
 
 
-    let r = await dataAccess.getPersons();  
+    let r = await dataAccess.getPerson();  
+
 
 
     // Select..
