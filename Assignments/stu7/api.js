@@ -48,9 +48,14 @@ app.get('/ex3/persons', cors(corsOptions), async (req, res) => {
     let persons = await dataAccess.getPersonsForType(req.query['personType'])
     res.send(persons);
 });
+
 //
 // GET /ex4/books
 //
+app.get('/ex4/books/', cors(corsOptions), async (req, res) => { 
+    let books = await dataAccess.getBooks()
+    res.send(books);
+});
 
 
 //
