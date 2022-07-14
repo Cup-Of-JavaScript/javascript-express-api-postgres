@@ -22,6 +22,16 @@ join person_type pt on p.person_type_id= pt.person_type_id
 where pt.person_type = $1`
 const GET_BOOKS = `select * from book;`
 const GET_BOOK =`select * from book where book_id=$1;`
+const GET_PERSONS_FOR_BOOK_STORE =
+`select 
+p.person_id,
+p.first_name,
+p.last_name,
+pt.person_type
+from person p
+join book_store bs on bs.book_store_id=p.book_store_id
+join person_type pt on p.person_type_id=pt.person_type_id
+where bs.book_store_id = $1`
 
 exports.getPersons = async () => {
   let retval = null;
@@ -78,3 +88,14 @@ exports.getPerson = async () => {
     }
     return retval;
   };
+
+  exports.getPersonsforBookStore = async (bookStoreId) => {
+    let retval = null;
+     try {
+       let r = await pool.query(GET_PERSONS_FOR_BOOK_STORE, [bookStoreId]);
+       retval = r.rows;
+     } catch (err) {
+       console.error(err);
+     }
+     return retval;
+   };
