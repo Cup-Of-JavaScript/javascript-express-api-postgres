@@ -89,7 +89,11 @@ app.get('/ex5/books/:id', cors(corsOptions), async (req,res) => {
 //
 
 // Ex. 6: TODO ...
-
+app.get('/ex6/persons/:id', cors(corsOptions), async (req,res) => {
+    let storeId = req.params['id']
+    let people = await dataAccess.getPeopleByStore(storeId)
+    res.send(people)
+});
 //
 // POST /ex7/persons
 //
