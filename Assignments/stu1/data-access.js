@@ -14,7 +14,7 @@ const SELECT_PEOPLEFORBOOKSTORE = "select p.person_id, p.first_name, p.last_name
 const ADD_PERSON = "insert into person (book_store_id, person_type_id, first_name, last_name, dob) values ($1, $2, $3, $4, $5) returning book_store_id, person_type_id, first_name, last_name, dob, person_id;"
 const ADD_BOOKSTORE = "insert into book_store (book_store_name) values ($1) returning book_store_name, book_store_id"
 const UPDATE_PERSON = "update person set first_name = $2, last_name = $3 where person_id = $1 returning person_id, person_type_id, book_store_id, first_name, last_name, dob;"
-
+const DELETE_PERSON = "delete from person where person_id = $1"
 
 // exports.ex1 = async () => {
 //     let personId = 1
@@ -113,6 +113,17 @@ exports.putUpdatePerson = async (person) => {
     let retval = null;
     try {       
         let r = await pool.query(UPDATE_PERSON, [person.personId, person.firstName, person.lastName]);
+        retval = r.rows;
+     } catch (err) {
+        console.error(err);
+     }
+    return retval;
+}
+
+exports.deletePerson = async (erasePerson) => {
+    let retval = null;
+    try {       
+        let r = await pool.query(DELETE_PERSON, [erasePerson]);
         retval = r.rows;
      } catch (err) {
         console.error(err);
