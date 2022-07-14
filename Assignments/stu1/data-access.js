@@ -9,6 +9,7 @@ const GET_PERSON = "select * from person;"
 const GET_PERSONID = "select * from person where person_id = $1"
 const GET_PERSON_TYPES = "select p.person_id, pt.person_type_id, p.first_name, p.last_name, p.dob, pt.person_type from person p join person_type pt on p.person_type_id = pt.person_type_id where pt.person_type = $1"
 const GET_BOOKS = "select * from book;"
+const GET_BOOKID = "select * from book where book_id = $1;"
 
 // exports.ex1 = async () => {
 //     let personId = 1
@@ -52,6 +53,17 @@ exports.getBooks = async () => {
     let retval = null;
     try {
         let r = await pool.query(GET_BOOKS);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}
+
+exports.getBook = async (bookID) => {
+    let retval = null;
+    try {
+        let r = await pool.query(GET_BOOKID, [bookID]);
         retval = r.rows;
     } catch (err) {
         console.error(err);
