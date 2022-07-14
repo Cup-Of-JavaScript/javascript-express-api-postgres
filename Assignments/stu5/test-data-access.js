@@ -15,7 +15,7 @@ const main = async () => {
     // }
     // let personId = 1
 
-    let r = await dataAccess.getPersonsforType();
+    let r = await dataAccess.getBooks();
     console.log(r)
     process.exit()
 }

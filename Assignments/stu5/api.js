@@ -50,13 +50,14 @@ app.get('/ex3/persons/', cors(corsOptions), async (req, res) => {
 });
 
 
-
-
 //
 // GET /ex4/books
-//
+app.get('/ex4/book/', cors(corsOptions), async (req, res) => { 
+    let result = await dataAccess.getBooks()
+    res.send(result);
+});
 
-// Ex. 4: TODO ...
+
 
 //
 // GET /ex5/books/:id
