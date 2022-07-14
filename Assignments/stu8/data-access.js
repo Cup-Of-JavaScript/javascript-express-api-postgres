@@ -22,6 +22,8 @@ const GET_PEOPLE_BY_BOOKSTORE = `select p.person_id,
 join person_type pt on p.person_type_id = pt.person_type_id
 join book_store bs on p.book_store_id = bs.book_store_id where bs.book_store_id = $1`
 
+const ADD_PERSON = `insert into person (book_store_id, person_type_id, first_name, last_name, dob) values ($1, $2, $3, $4, $5) returning book_store_id, person_type_id, first_name, last_name, dob, person_id;`
+
 const { pool } = require("../../postgres-pool");
 
 exports.getPersons = async () => {
@@ -83,6 +85,17 @@ exports.getPeopleByStore = async (storeId) => {
     let retval = null;
     try {
         let r = await pool.query(GET_PEOPLE_BY_BOOKSTORE, [storeId]);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}
+
+exports.addPerson = async (person) => {
+    let retval = null;
+    try {
+        let r = await pool.query(ADD_PERSON, [person.personTypeId, person.bookStoreId, person.firstName, person.lastName, person.dob]);
         retval = r.rows;
     } catch (err) {
         console.error(err);
