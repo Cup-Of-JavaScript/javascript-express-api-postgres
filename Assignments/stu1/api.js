@@ -128,7 +128,6 @@ app.put('/ex9/persons', cors(corsOptions), async (req, res) => {
 app.delete('/ex10/persons/:id', cors(corsOptions), async (req, res) => { 
     let deletePerson = req.params['id'];;
     let erasePerson = await dataAccess.deletePerson(deletePerson)
-    deletePerson.erasePerson = erasePerson
     console.log(erasePerson)
     res.send('OK')
 });
