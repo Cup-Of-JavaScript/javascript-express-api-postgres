@@ -30,6 +30,8 @@ const ADD_BOOKSTORE = `
   values 
     ($1) returning book_store_id, book_store_name`
 
+const UPDATE_PERSON = 'update person set first_name = $2, last_name = $3 where person_id = $1 returning person_id, first_name, last_name'
+
 const { pool } = require("../../postgres-pool");
 
 exports.getPersons = async () => {
@@ -119,3 +121,14 @@ exports.addBookstore = async (bookstore) => {
       }
     return retval;
 }
+
+exports.updatePerson = async (person) => {
+    let retval = null;
+    try {
+        let r = await pool.query(UPDATE_PERSON, [person.personId, person.firstName, person.lastName]);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}   

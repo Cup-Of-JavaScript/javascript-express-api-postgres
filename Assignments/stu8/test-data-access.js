@@ -6,11 +6,13 @@
 const dataAccess = require('./data-access');
 
 const main = async () => {
-    let bookstore  = {
-        "bookstoreName": "Book Worms"
-    }
+    let person  = {
+        "personId": 1,
+        "firstName": "Ms. Alice",
+        "lastName": "Change"
+      }
 
-    let r = await dataAccess.addBookstore(bookstore)
+    let r = await dataAccess.updatePerson(person)
     console.log(r)
     process.exit()
 }

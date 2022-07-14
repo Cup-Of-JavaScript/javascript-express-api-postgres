@@ -122,6 +122,13 @@ app.post('/ex8/bookstores', cors(corsOptions), async (req,res) => {
 
 // Ex. 9: TODO ...
 
+app.put('/ex9/persons', cors(corsOptions), async (req,res) => {
+    let person = req.body;
+    let personId = await dataAccess.updatePerson(person)
+    person.personId = personId
+    res.send(person);
+})
+
 //
 // DELETE /ex10/persons/:id
 //
