@@ -1,15 +1,12 @@
-//
-// File: data-access.js
-// Date: 6/30/2022
-// Desc: CommonJS module that contains our data access code.
-//
-
 const { pool } = require("../../postgres-pool");
 
-exports.getPerson = async (personId) => {
+const get_Persons = 'select * from person'
+
+exports.getPersons = async () => {
     let retval = null;
     try {
-        // TODO ...
+       let r = await pool.query(get_Persons);
+       retval = r.rows
     } catch (err) {
         console.error(err);
     }
