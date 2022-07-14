@@ -1,9 +1,3 @@
-// 
-// File: api.js
-// Date: 6/30/2022
-// Desc: Simple API using CommonJS modules.
-//
-
 const cors = require('cors');
 const express = require('express');
 const dataAccess = require('./data-access');
@@ -24,6 +18,11 @@ app.use(cors());
 //
 // GET /ex1/persons/
 //
+
+app.get('/ex1/persons/', cors(corsOptions), async (req, res) => { 
+    let persons = await dataAccess.getPersons()
+    res.send(persons)
+});
 
 // Ex. 1: TODO ...
 
