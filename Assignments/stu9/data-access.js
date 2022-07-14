@@ -25,13 +25,4 @@ exports.getPerson = async (personId) => {
     }
     return retval;
 }
-exports.getPersonType = async (personsType) => {
-    let retval = null;
-    try {
-        let r = await pool.query(get_Person_Type, [personsType]);
-        retval = r.rows;
-    } catch (err) {
-        console.error(err);
-    }
-    return retval;
-}
+
