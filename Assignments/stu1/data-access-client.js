@@ -8,7 +8,7 @@ const dataAccess = require('./data-access.js');
 const main = async () => {
      
     
-    let r = await dataAccess.getPeopleForBookstore();  
+    let r = await dataAccess.AddPerson();  
 
 
     // Select..
