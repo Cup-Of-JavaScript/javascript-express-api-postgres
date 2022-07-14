@@ -73,12 +73,14 @@ app.get('/ex6/book_store/:id', cors(corsOptions), async (req, res) => {
 });
 
 
-
-//
 // POST /ex7/persons
-//
+app.post('/ex7/persons/', cors(corsOptions), async (req, res) => { 
+    let person = req.body;
+    let result = await dataAccess.addPerson(person.personTypeId, person.bookStoreId, person.firstName, person.lastName, person.dob)
+    res.send(result);
+});
 
-// Ex. 7: TODO ...
+
 
 //
 // POST /ex8/bookstores
