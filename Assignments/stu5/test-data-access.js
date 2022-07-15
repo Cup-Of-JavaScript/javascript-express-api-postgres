@@ -14,8 +14,11 @@ const main = async () => {
     //     dob: "8/29/1970"
     // }
     // let personId = 1
+    let  bookStoreName ="Book Worm"
+                    
+                    
 
-    let r = await dataAccess.addPerson();
+    let r = await dataAccess.addBookStore(bookStoreName);
     console.log(r)
     process.exit()
 }
