@@ -37,6 +37,11 @@ const ADD_PERSON =
   person(person_type_id, book_store_id, first_name, last_name, dob) 
   values($1,$2,$3,$4,$5) 
 returning person_id, first_name, last_name;`
+const ADD_BOOK_STORE = 
+`insert into 
+ book_store(book_store_name) 
+ values ($1) 
+ returning book_store_name, book_store_id;`
 
 exports.getPersons = async () => {
   let retval = null;
@@ -49,8 +54,7 @@ exports.getPersons = async () => {
   return retval;
 };
 
-exports.getPerson = async () => {
-    let personId = 1
+exports.getPerson = async (personId) => {
     let retval = null;
     try {
       let r = await pool.query(GET_PERSON, [personId]);
@@ -115,3 +119,17 @@ exports.getPerson = async () => {
      }
      return retval;
    };
+
+
+   exports.addBookStore = async (bookStoreName) => {
+    let retval = null;
+     try {
+       let r = await pool.query(ADD_BOOK_STORE, [bookStoreName]);
+       retval = r.rows;
+     } catch (err) {
+       console.error(err);
+     }
+     return retval;
+   };
+
+   

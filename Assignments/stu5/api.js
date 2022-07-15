@@ -80,13 +80,14 @@ app.post('/ex7/persons/', cors(corsOptions), async (req, res) => {
     res.send(result);
 });
 
-
-
-//
 // POST /ex8/bookstores
-//
+app.post('/ex8/book_store/', cors(corsOptions), async (req, res) => { 
+     let bookStore = req.body;
+    let result = await dataAccess.addBookStore(bookStore.bookStoreName)
+    res.send(result);
+});
 
-// Ex. 8: TODO ...
+
 
 //
 // PUT /ex9/persons
