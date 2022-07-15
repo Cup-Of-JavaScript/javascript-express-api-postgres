@@ -25,7 +25,7 @@ const main = async () => {
      }
      
     
-     let r = await dataAccess.putUpdatePerson(person);  
+     let r = await dataAccess.getPersons();  
   
 
     // Select..
