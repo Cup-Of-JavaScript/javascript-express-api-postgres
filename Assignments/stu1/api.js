@@ -116,7 +116,7 @@ app.post('/ex8/bookstores', cors(corsOptions), async (req, res) => {
 
 app.put('/ex9/persons', cors(corsOptions), async (req, res) => { 
     let person = req.body;
-    let updatePerson = await dataAccess.putUpdatePerson(person)
+    let updatePerson = await dataAccess.putpdatePerson(person)
     person.updatePerson = updatePerson
     res.send(updatePerson)
 });
@@ -125,7 +125,12 @@ app.put('/ex9/persons', cors(corsOptions), async (req, res) => {
 // DELETE /ex10/persons/:id
 //
 
-// Ex. 10: TODO ...
+app.delete('/ex10/persons/:id', cors(corsOptions), async (req, res) => { 
+    let deletePerson = req.params['id'];;
+    let erasePerson = await dataAccess.deletePerson(deletePerson)
+    console.log(erasePerson)
+    res.send('OK')
+});
 
 app.listen(PORT, () => {
     console.log(`Bookstore API is running on port: ${PORT}`);
