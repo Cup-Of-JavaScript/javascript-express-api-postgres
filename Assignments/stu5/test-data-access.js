@@ -15,13 +15,13 @@ const main = async () => {
     // }
     // let personId = 1
   let    personId = 1
-  let  firstName = " Diana"
-  let   lastName = "Tewah"
+//   let  firstName = " Diana"
+//   let   lastName = "Tewah"
   
                     
                     
 
-    let r = await dataAccess.updatePerson(personId,firstName, lastName);
+    let r = await dataAccess.deletePerson(personId);
     console.log(r)
     process.exit()
 }
