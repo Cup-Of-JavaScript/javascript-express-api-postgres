@@ -91,11 +91,15 @@ app.post('/ex8/book_store/', cors(corsOptions), async (req, res) => {
 
 //
 // PUT /ex9/persons
-//
+app.put('/ex9/person/', cors(corsOptions), async (req, res) => { 
+    let person = req.body;
+   let result = await dataAccess.updatePerson(person.personId,person.firstName,person.lastName) 
+   res.send(result);
+});
 
-// Ex. 9: TODO ...
 
-//
+
+
 // DELETE /ex10/persons/:id
 //
 
