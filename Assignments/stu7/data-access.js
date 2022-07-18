@@ -61,3 +61,16 @@ exports.getBooks = async () => {
     }
     return retval;
 }
+
+//ex5:
+const GET_BOOK = 'SELECT * FROM book WHERE book_id = $1'
+exports.getBookById = async (bookID) => {
+    let retval = null;
+    try {
+        let r = await pool.query(GET_BOOK, [bookID]);
+        retval = r.rows;
+    } catch (err) {
+        console.error(err);
+    }
+    return retval;
+}
