@@ -7,9 +7,9 @@
 
 const cors = require('cors');
 const express = require('express');
-//const dataAccess = require('./data-access');
+const dataAccess = require('./data-access-iga');
 
-const PORT = 7777;
+const PORT = 5150;
 const app = express();
 
 var corsOptions = {
@@ -44,9 +44,12 @@ app.use(cors());
 // GET /message
 //
 
-app.get('/helloworld', cors(corsOptions), async (req, res) => {
-     res.send('Hello World.')
-});
+app.get('/bookstores/:id/books'), cors(corsOptions), async (req, res) => {
+    let bookstoreId = req.params['id'];
+    let result = await dataAccess.getBookStoreId(bookstoreId)
+    console.log(result)
+    res.send(result)
+};
 
 app.listen(PORT, () => {
     console.log(`Express API is running on port: ${PORT}`);

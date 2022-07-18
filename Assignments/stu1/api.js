@@ -27,8 +27,11 @@ app.use(cors());
 
 app.get('/ex1/persons/', cors(corsOptions), async (req, res) => {
     let result = await dataAccess.getPersons()
-    console.log(result)
-    res.send(result)
+    if (getPersons != result){
+        res.status(204)  
+    } else {
+        res.send(result)
+    }
 });
 
 //
@@ -127,7 +130,7 @@ app.put('/ex9/persons', cors(corsOptions), async (req, res) => {
 
 app.delete('/ex10/persons/:id', cors(corsOptions), async (req, res) => { 
     let deletePerson = req.params['id'];;
-    let erasePerson = await dataAccess.deletePerson(deletePerson)
+    let erasePerson = await dataAccess.deletePerson(deletePerson)          
     console.log(erasePerson)
     res.send('OK')
 });
