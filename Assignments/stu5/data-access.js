@@ -43,8 +43,10 @@ const ADD_BOOK_STORE =
  values ($1) 
  returning book_store_name, book_store_id;`
  const UPDATE_PERSON = 'update person set first_name =$2, last_name=$3 where person_id = $1 returning person_id, first_name, last_name;'
+ const DELETE_PERSON = 'delete from person where person_id = $1 ;'
 
-exports.getPersons = async () => {
+
+ exports.getPersons = async () => {
   let retval = null;
   try {
     let r = await pool.query(GET_PERSONS);
@@ -137,6 +139,17 @@ exports.getPerson = async (personId) => {
     let retval = null;
     try {
       let r = await pool.query(UPDATE_PERSON, [personId,firstName, lastName]);
+      retval = r.rows;
+    } catch (err) {
+      console.error(err);
+    }
+    return retval;
+   }
+
+   exports.deletePerson = async(personId) =>{
+    let retval = null;
+    try {
+      let r = await pool.query(DELETE_PERSON, [personId]);
       retval = r.rows;
     } catch (err) {
       console.error(err);
